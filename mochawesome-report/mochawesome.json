@@ -1,0 +1,138 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-22T18:55:07.261Z",
+    "end": "2025-10-22T18:55:15.452Z",
+    "duration": 8191,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "da502f38-d898-4709-ad99-26dc35751120",
+      "title": "",
+      "fullFile": "D:\\Bootcamp QA\\uiAutomation_1\\test_sauce.js",
+      "file": "\\test_sauce.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "af1b30cb-3045-4e83-9fa0-0debb4077fb5",
+          "title": "Test SAUCEDEMO",
+          "fullFile": "D:\\Bootcamp QA\\uiAutomation_1\\test_sauce.js",
+          "file": "\\test_sauce.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "ini test case pertama berhasil masuk web nya",
+              "fullTitle": "Test SAUCEDEMO ini test case pertama berhasil masuk web nya",
+              "timedOut": false,
+              "duration": 4401,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder()\n    .forBrowser('chrome')\n    .setChromeOptions(options)\n    .build();\nawait driver.manage().window().maximize();\nawait driver.get('https://www.saucedemo.com/v1/');\n//assert\nlet title = await driver.getTitle();\nassert.strictEqual(title, 'Swag Labs');",
+              "err": {},
+              "uuid": "c3fda1b1-3688-44b4-aab8-0734459feaa9",
+              "parentUUID": "af1b30cb-3045-4e83-9fa0-0debb4077fb5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "ini test kedua login",
+              "fullTitle": "Test SAUCEDEMO ini test kedua login",
+              "timedOut": false,
+              "duration": 1449,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let inputUsername = await driver.findElement(By.id(\"user-name\"))\nawait inputUsername.sendKeys(\"standard_user\")\nlet inputPassword = await driver.findElement(By.id(\"password\"))\nawait inputPassword.sendKeys(\"secret_sauce\")\nlet buttonLogin = await driver.findElement(By.id(\"login-button\"));\nawait buttonLogin.click();\n//assert\nlet produk = await driver.findElement(By.className(\"product_label\"))\nlet isDisplayed = await produk.isDisplayed();\nassert.strictEqual(isDisplayed, true);",
+              "err": {},
+              "uuid": "8f762420-d312-4f6a-b4ae-1b552832d6c9",
+              "parentUUID": "af1b30cb-3045-4e83-9fa0-0debb4077fb5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "ini test ketiga short A to Z",
+              "fullTitle": "Test SAUCEDEMO ini test ketiga short A to Z",
+              "timedOut": false,
+              "duration": 2333,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let shortCart = await driver.findElement(By.className(\"product_sort_container\"));\nawait shortCart.click();\nlet shortfromAz = await driver.findElement(By.xpath(\"//option[@value='az']\"));\nawait shortfromAz.click();\n//assert\nlet shortAz = await driver.findElement(By.xpath(\"//option[@value='az']\"))\nlet textAtoz = await shortAz.getText();\nassert.strictEqual(textAtoz, \"Name (A to Z)\");\nawait driver.sleep(2000);\nawait driver.quit();",
+              "err": {},
+              "uuid": "43d85e81-af1c-4cf4-a2f4-d2f7076b412b",
+              "parentUUID": "af1b30cb-3045-4e83-9fa0-0debb4077fb5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c3fda1b1-3688-44b4-aab8-0734459feaa9",
+            "8f762420-d312-4f6a-b4ae-1b552832d6c9",
+            "43d85e81-af1c-4cf4-a2f4-d2f7076b412b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8183,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 5000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.4"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.0"
+    }
+  }
+}
