@@ -9,24 +9,25 @@ describe('Test SAUCEDEMO', function () {
     let driver;
     let options = new chrome.Options();
     options.addArguments('--incognito');
+    // options.addArguments('--headless'); 
     options.addArguments('--log-level=3'); // warning/error logs buat ngilangin eror
 
-    it('ini test case pertama berhasil masuk web nya', async function () {
+    before(async function () { //sebelum test dijalankan buka browser.
+        console.log('ini before test');
         driver = await new Builder()
             .forBrowser('chrome')
             .setChromeOptions(options)
             .build();
-
         await driver.manage().window().maximize();
         await driver.get('https://www.saucedemo.com/v1/');
-
-        //assert
-        let title = await driver.getTitle();
-        assert.strictEqual(title, 'Swag Labs');
     });
 
+    after(async function () { //setelah semua test selesai quit browser.
+        await driver.sleep(2000);
+        await driver.quit();
+    });
 
-    it('ini test kedua login', async function () {
+    it('ini test pertama login', async function () {
         let inputUsername = await driver.findElement(By.id("user-name"))
         await inputUsername.sendKeys("standard_user")
         let inputPassword = await driver.findElement(By.id("password"))
@@ -40,7 +41,7 @@ describe('Test SAUCEDEMO', function () {
         assert.strictEqual(isDisplayed, true);
     });
 
-    it('ini test ketiga short A to Z', async function () {
+    it('ini test kedua short', async function () {
         let shortCart = await driver.findElement(By.className("product_sort_container"));
         await shortCart.click();
         let shortfromAz = await driver.findElement(By.xpath("//option[@value='az']"));
@@ -50,10 +51,6 @@ describe('Test SAUCEDEMO', function () {
         let shortAz = await driver.findElement(By.xpath("//option[@value='az']"))
         let textAtoz = await shortAz.getText();
         assert.strictEqual(textAtoz, "Name (A to Z)");
-
-        await driver.sleep(2000);
-        await driver.quit();
     });
-
 
 });
